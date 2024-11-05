@@ -12,10 +12,10 @@ jobs:
     
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
       
     - name: Set up Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v4
       with:
         node-version: '16'  
         
@@ -30,10 +30,10 @@ jobs:
     
     steps: 
     - name: Checkout code 
-      uses: actions/checkout@v2 
+      uses: actions/checkout@v4
     
     - name: Set up Node.js 
-      uses: actions/setup-node@v2 
+      uses: actions/setup-node@v4
       with: 
         node-version: '16'  
         
@@ -43,10 +43,10 @@ jobs:
     - name: Run Lighthouse performance tests 
       run: | 
         npm install -g lighthouse 
-        lighthouse https://votre-site.github.io --output=json --output-path=./lighthouse-report.json 
+        lighthouse https://j4ckr0y.github.io/Pong --output=json --output-path=./lighthouse-report.json 
 
     - name: Upload Lighthouse report 
-      uses: actions/upload-artifact@v2 
+      uses: actions/upload-artifact@v4
       with: 
         name: lighthouse-report 
         path: ./lighthouse-report.json
