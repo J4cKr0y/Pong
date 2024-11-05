@@ -2,27 +2,30 @@
 
 // Mock du DOM pour simuler l'environnement navigateur
 document.body.innerHTML = `
+	<div class="mobile-controls">
+        <div class="player1-controls">
+            <button class="control-button player1-up">↑</button>
+            <button class="control-button player1-down">↓</button>
+        </div>
+	</div>
 <div class="board">
-  <div class="ball">
-    <div class="ball_effect"></div>
-  </div>
-  <div class="paddle_1 paddle"></div>
-  <div class="paddle_2 paddle"></div>
-  <div class="player_1_score">0</div>
-  <div class="player_2_score">0</div>
-  <div class="message">Appuyez sur Entrer pour lancer la partie</div>
-  <div class="mobile-controls">
-    <div class="player1-controls">
-      <button class="control-button player1-up">↑</button>
-      <button class="control-button player1-down">↓</button>
-    </div>
-    <button class="start-button">Start</button>
-    <div class="player2-controls">
-      <button class="control-button player2-up">↑</button>
-      <button class="control-button player2-down">↓</button>
-    </div>
-  </div>
+        <div class='ball'>
+            <div class="ball_effect"></div>
+        </div>
+        <div class="paddle_1 paddle"></div>
+        <div class="paddle_2 paddle"></div>
+        <h1 class="player_1_score">0</h1>
+        <h1 class="player_2_score">0</h1>
+        <h1 class="message">
+        </h1>
 </div>
+    <div class="mobile-controls">
+        <button class="start-button">Start</button>
+        <div class="player2-controls">
+            <button class="control-button player2-up">↑</button>
+            <button class="control-button player2-down">↓</button>
+        </div>
+    </div>  
 `;
 
 // Mock des fonctions du navigateur
@@ -36,6 +39,7 @@ describe('Pong Game Tests', () => {
   let paddle2;
   let score1;
   let score2;
+  let message;
   
   beforeEach(() => {
     // Réinitialisation des éléments avant chaque test
@@ -45,6 +49,7 @@ describe('Pong Game Tests', () => {
     paddle2 = document.querySelector('.paddle_2');
     score1 = document.querySelector('.player_1_score');
     score2 = document.querySelector('.player_2_score');
+	message = document.querySelector('.message');
     
     // Reset des positions
     ball.style.top = '50%';

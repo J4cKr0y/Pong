@@ -35,7 +35,10 @@
           width: 100%;
           border-radius: 100px;
           animation: spinBall 0.1s linear infinite;
-		  background-color: chartreuse;
+          box-shadow: inset 0 0 18px #fff, inset 6px 0 18px violet,
+            inset -6px 0 18px #0ff, inset 6px 0 30px violet, 
+            inset -6px 0 30px #0ff, 0 0 18px #fff, 
+            -4px 0 18px violet, 4px 0 18px #0ff;
         }
         
         @keyframes spinBall {
@@ -50,18 +53,26 @@
           width: 18px;
           border-radius: 50%;
           position: fixed;
-		  background-color: chartreuse;
-		  
         }
         
         .paddle_1 {
           top: calc(7.5vh + 55px);
           left: calc(10vw + 30px);
+          box-shadow: inset 0 0 18px #fff, 
+            inset -6px 0 18px #f3bad6,
+            inset 6px 0 18px #0ff, inset -6px 0 30px #f3bad6, 
+            inset 6px 0 30px #0ff, 0 0 18px #fff, 
+            4px 0 18px #f3bad6, -4px 0 18px #0ff;
         }
         
         .paddle_2 {
           top: calc(85vh + 7.5vh - 100px - 55px);
           right: calc(10vw + 30px);
+          box-shadow: inset 0 0 18px #fff, 
+            inset 6px 0 18px #f3bad6,
+            inset -6px 0 18px #0ff, inset 6px 0 30px #f3bad6,
+            inset -6px 0 30px #0ff,
+            0 0 18px #fff, -4px 0 18px #f3bad6, 4px 0 18px #0ff;
         }
         
         .player_1_score {
@@ -84,78 +95,122 @@
         
         .message {
           position: fixed;
+          /* color: #48426d; */
           height: 10vh;
           width: 30vw;
           color: #c9cbff;
           left: 38vw;
           margin: 30px auto auto auto;
         }
-
- /* Styles pour les contrôles mobiles */
+        /* Styles pour les contrôles mobiles */
         .mobile-controls {
-            display: none; /* Caché par défaut */
+            display: none; 
         }
         
-        @media (max-width: 768px) {
-            .mobile-controls {
-                display: block;
-            }
+@media (max-width: 768px) {
+    .mobile-controls {
+        display: flex;
+        justify-content: space-between;
+        position: fixed;
+        bottom: 20px;
+        left: 0;
+        right: 0;
+        padding: 0 20px;
+        z-index: 1000;
+    }
+    
+    .control-button {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: none;
+        color: #fff;
+        font-size: 24px;
+        margin: 10px 0;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    .player1-controls {
+        position: fixed;
+        left: 10px;
+        bottom: 60px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .player2-controls {
+        position: fixed;
+        right: 10px;
+        bottom: 60px;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .player1-up {
+        margin-bottom: 20px;
+    }
+    
+    .player2-up {
+        margin-bottom: 20px;
+    }
+    
+    .start-button {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 15px 40px;
+        background-color: transparent;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        font-size: 18px;
+        z-index: 1000;
+    }
             
-            .control-button {
-                width: 60px;
-                height: 60px;
-                border-radius: 50%;
-                border: none;
-                color: white;
-                font-size: 24px;
-                position: fixed;
-                bottom: 80px;
-                z-index: 1000;
-            }
-            
-            .player1-controls {
-                left: 20px;
-            }
-            
-            .player1-up {
-                bottom: 160px;
-                background-color: #4a90e2;
-            }
-            
-            .player1-down {
-                bottom: 80px;
-                background-color: #4a90e2;
-            }
-            
-            .player2-controls {
-                right: 20px;
-            }
-            
-            .player2-up {
-                bottom: 160px;
-                background-color: #e24a4a;
-            }
-            
-            .player2-down {
-                bottom: 80px;
-                background-color: #e24a4a;
-            }
-            
-            .start-button {
-                position: fixed;
-                bottom: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                padding: 15px 40px;
-                background-color: #4CAF50;
-                color: white;
-                border: none;
-                border-radius: 25px;
-                font-size: 18px;
-                z-index: 1000;
-            }
-            
-            .control-button:active, .start-button:active {
-                opacity: 0.8;
-            }
-        }
+    .player1-controls .control-button {
+        box-shadow: inset 0 0 18px #fff, 
+            inset -6px 0 18px #f3bad6,
+            inset 6px 0 18px #0ff, 
+            inset -6px 0 30px #f3bad6, 
+            inset 6px 0 30px #0ff, 
+            0 0 18px #fff, 
+            4px 0 18px #f3bad6, 
+            -4px 0 18px #0ff;
+    }
+    
+    .player2-controls .control-button {
+        box-shadow: inset 0 0 18px #fff, 
+            inset 6px 0 18px #f3bad6,
+            inset -6px 0 18px #0ff, 
+            inset 6px 0 30px #f3bad6,
+            inset -6px 0 30px #0ff,
+            0 0 18px #fff, 
+            -4px 0 18px #f3bad6, 
+            4px 0 18px #0ff;
+    }
+
+    .start-button {
+        box-shadow: inset 0 0 18px #fff, 
+            inset 6px 0 18px violet,
+            inset -6px 0 18px #0ff, 
+            inset 6px 0 30px violet, 
+            inset -6px 0 30px #0ff, 
+            0 0 18px #fff, 
+            -4px 0 18px violet, 
+            4px 0 18px #0ff;
+    }
+    
+    .control-button:active, .start-button:active {
+        opacity: 0.8;
+        box-shadow: inset 0 0 25px #fff, 
+            inset 6px 0 25px violet,
+            inset -6px 0 25px #0ff, 
+            inset 6px 0 40px violet, 
+            inset -6px 0 40px #0ff, 
+            0 0 25px #fff, 
+            -4px 0 25px violet, 
+            4px 0 25px #0ff;
+    }
+}

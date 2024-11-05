@@ -120,24 +120,46 @@ let gameState = 'start';
         }
  // Ajout de la détection mobile
  function isMobile() {
-            return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-        }
+    return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || 
+           /Mobile|Tablet|Android|iOS|iPhone|iPad/i.test(navigator.userAgent);
+}
 
-        // Mise à jour du message si on est sur mobile
-        if (isMobile()) {
-            document.querySelector('.message').innerHTML = 'Appuyez sur Start pour commencer';
-        }
+function isScreenSmall() {
+    return window.innerWidth < 768;
+}
 
-        // Fonction pour simuler un événement clavier
+function updateMessage() {
+    const message = document.querySelector('.message');
+    if (isMobile() || isScreenSmall()) {
+        message.innerHTML = 'Appuyez sur Start pour commencer';
+    } else {
+        message.innerHTML = 'Appuyez sur Entrer pour lancer la partie, - Z et S à gauche, ↑ et ↓ à droite.';
+    }
+}
+
+
+updateMessage();
+
+
+window.addEventListener('resize', () => {
+    updateMessage();
+});
+
+
+window.addEventListener('orientationchange', () => {
+    updateMessage();
+});
+
+
         function simulateKeyPress(key) {
             const event = new KeyboardEvent('keydown', { key: key });
             document.dispatchEvent(event);
         }
 
-        // Gestionnaires d'événements pour les contrôles tactiles
+
         document.querySelector('.player1-up').addEventListener('touchstart', function(e) {
             e.preventDefault();
-            simulateKeyPress('w');
+            simulateKeyPress('z');
         });
 
         document.querySelector('.player1-down').addEventListener('touchstart', function(e) {
@@ -160,7 +182,7 @@ let gameState = 'start';
             simulateKeyPress('Enter');
         });
 
-        // Empêcher le défilement de la page lors du toucher des boutons
+
         document.querySelectorAll('.control-button, .start-button').forEach(button => {
             button.addEventListener('touchmove', function(e) {
                 e.preventDefault();

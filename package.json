@@ -4,7 +4,10 @@
   "description": "Old school game on html/css/js",
   "main": "pong.html",
   "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.26.0",
     "@testing-library/jest-dom": "^6.6.3",
+    "babel-jest": "^29.7.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0"
   },
@@ -13,10 +16,15 @@
   },
   "jest": {
     "testEnvironment": "jsdom",
-    "setupFiles": ["./jest.setup.js"],
-    "moduleNameMapper": {
-      "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js",
-      "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
+    "testMatch": [
+      "**/__tests__/**/*.[jt]s?(x)",
+      "**/?(*.)+(spec|test).[tj]s?(x)"
+    ],
+    "testPathIgnorePatterns": [
+      "\\node_modules\\"
+    ],
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
     }
   }
 }
