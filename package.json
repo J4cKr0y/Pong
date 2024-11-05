@@ -1,11 +1,13 @@
 {
+  "name": "Pong",
+  "version": "1.0.0",
+  "description": "Old school game on html/css/js",
+  "main": "pong.html",
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0"
-  }
-}
-{
+  },
   "scripts": {
     "test": "jest"
   },
