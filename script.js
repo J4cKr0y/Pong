@@ -19,9 +19,6 @@ let gameState = 'start';
         let dxd = Math.floor(Math.random() * 2);
         let dyd = Math.floor(Math.random() * 2);
         
-		const message = document.querySelector('.message');
-		message.innerHTML = 'Appuyez sur Entrer pour lancer la partie, - Z et S à gauche, ↑ et ↓ à droite.';
-		
         document.addEventListener('keydown', (e) => {
           if (e.key == 'Enter') {
             gameState = gameState == 'start' ? 'play' : 'start';
@@ -121,3 +118,51 @@ let gameState = 'start';
             moveBall(dx, dy, dxd, dyd);
           });
         }
+ // Ajout de la détection mobile
+ function isMobile() {
+            return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        }
+
+        // Mise à jour du message si on est sur mobile
+        if (isMobile()) {
+            document.querySelector('.message').innerHTML = 'Appuyez sur Start pour commencer';
+        }
+
+        // Fonction pour simuler un événement clavier
+        function simulateKeyPress(key) {
+            const event = new KeyboardEvent('keydown', { key: key });
+            document.dispatchEvent(event);
+        }
+
+        // Gestionnaires d'événements pour les contrôles tactiles
+        document.querySelector('.player1-up').addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            simulateKeyPress('w');
+        });
+
+        document.querySelector('.player1-down').addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            simulateKeyPress('s');
+        });
+
+        document.querySelector('.player2-up').addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            simulateKeyPress('ArrowUp');
+        });
+
+        document.querySelector('.player2-down').addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            simulateKeyPress('ArrowDown');
+        });
+
+        document.querySelector('.start-button').addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            simulateKeyPress('Enter');
+        });
+
+        // Empêcher le défilement de la page lors du toucher des boutons
+        document.querySelectorAll('.control-button, .start-button').forEach(button => {
+            button.addEventListener('touchmove', function(e) {
+                e.preventDefault();
+            });
+        });

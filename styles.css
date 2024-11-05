@@ -90,4 +90,72 @@
           left: 38vw;
           margin: 30px auto auto auto;
         }
- 
+
+ /* Styles pour les contrôles mobiles */
+        .mobile-controls {
+            display: none; /* Caché par défaut */
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-controls {
+                display: block;
+            }
+            
+            .control-button {
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                border: none;
+                color: white;
+                font-size: 24px;
+                position: fixed;
+                bottom: 80px;
+                z-index: 1000;
+            }
+            
+            .player1-controls {
+                left: 20px;
+            }
+            
+            .player1-up {
+                bottom: 160px;
+                background-color: #4a90e2;
+            }
+            
+            .player1-down {
+                bottom: 80px;
+                background-color: #4a90e2;
+            }
+            
+            .player2-controls {
+                right: 20px;
+            }
+            
+            .player2-up {
+                bottom: 160px;
+                background-color: #e24a4a;
+            }
+            
+            .player2-down {
+                bottom: 80px;
+                background-color: #e24a4a;
+            }
+            
+            .start-button {
+                position: fixed;
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 15px 40px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 25px;
+                font-size: 18px;
+                z-index: 1000;
+            }
+            
+            .control-button:active, .start-button:active {
+                opacity: 0.8;
+            }
+        }
