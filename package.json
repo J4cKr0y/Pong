@@ -21,7 +21,7 @@
       "**/?(*.)+(spec|test).[tj]s?(x)"
     ],
     "testPathIgnorePatterns": [
-      "\\node_modules\\"
+      "\node_modules\"
     ],
     "transform": {
       "^.+\\.[t|j]sx?$": "babel-jest"
